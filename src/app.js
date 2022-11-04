@@ -1,5 +1,4 @@
 const ideaDisplay = document.querySelector("#ideas");
-const baseURL = "http://ideasai.com";
 
 fetch(baseURL + "/ideas")
   .then((response) => response.json())
