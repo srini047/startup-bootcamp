@@ -56,19 +56,19 @@ app.get("/domains", function (req, res) {
     .catch((err) => console.log(err));
 });
 
-// app.get('/tools', function (req, res) {
-//   axios(toolsURL).then((response) => {
-//     const resp = response.data;
-//     const $ = cheerio.load(resp);
-//     const tools = [];
+app.get('/tools', function (req, res) {
+  axios(toolsURL).then((response) => {
+    const resp = response.data;
+    const $ = cheerio.load(resp);
+    const tools = [];
 
-//     $(".tool-meta-title", resp).each(function() {
-//       const tool = $(this).find("h2").find("a").text();
+    $(".tool-meta-title", resp).each(function() {
+      const tool = $(this).find("h2").find("a").text();
 
-//       tools.push({ tool })
-//     });
-//     res.json(tools);
-//   })
-// })
+      tools.push({ tool })
+    });
+    res.json(tools);
+  })
+})
 
 app.listen(PORT || 8000, () => console.log(`Server running on PORT ${PORT}`));
